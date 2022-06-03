@@ -1,6 +1,9 @@
 const { request } = require('express');
 const express = require('express')
 const app = express() //amakes it easy to invoke methods that come with express
+const cors= require('cors') //13 install cors
+
+app.use(cors()) //14 emable app to use cors
 
 //10 API info. This is just an object
 const rappers = {
@@ -46,6 +49,6 @@ app.get('/api/:name', (request, response) => {
 
 //6Server needs to be set up to listen
 const PORT = 8000
-app.listen(PORT/*7tells server where to listen*/, ()=> { /*8tell server what to do*/
+app.listen(process.env.PORT /*12 use environment variable or hardcoded port*/ || PORT/*7tells server where to listen*/, ()=> { /*8tell server what to do*/
     console.log(`The server is now running on port ${PORT}.`)
 })
